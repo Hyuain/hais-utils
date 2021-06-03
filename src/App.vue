@@ -1,41 +1,20 @@
 <template>
-  <label>
-    输入
-    <input v-model="inputData">
-  </label>
-  {{inputData}}
-  <button @click="handleRun">运行</button>
-  <div >
-    <textarea style="height: 300px; width: 500px" v-model="xxx">
-    </textarea>
-  </div>
+  <util-list :utils="allUtils[0].utils"></util-list>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import utils from "./utils"
-
-const TEXT = `(${utils[0].methods[0].content})`
+import allUtils from "./utils"
+import UtilList from "./components/UtilList.vue"
 
 export default defineComponent({
   name: "App",
-  components: {},
+  components: { UtilList },
   data() {
     return {
-      inputData: "",
-      xxx: TEXT,
+      allUtils,
     }
   },
-  methods: {
-    handleRun() {
-      console.log(utils)
-      console.log(this.inputData)
-      let a = this.inputData
-      const c = this.xxx + `(${a})`
-      console.log(c)
-      console.log(eval(c))
-    },
-  }
 })
 </script>
 
