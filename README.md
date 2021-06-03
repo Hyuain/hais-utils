@@ -1,27 +1,21 @@
-# Vue 3 + Typescript + Vite
+# 小海的工具箱
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+一个简单的常用工具函数集，之后会不断扩充（但愿）。[点击这里在线使用](https://hais-teatime.com/hais-utils/)
 
-## Recommended IDE Setup
+平日里偶尔遇到一些问题，会用到一些工具函数，作为一名面向 CV 编程的工程师，自然是觉得麻烦，生活中也不方便装X——这就是本项目的由来。这些函数可以简单地在线运行，也可以复制下来在浏览器中直接使用。
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+## 依赖
 
-### If Using `<script setup>`
+使用 Vite + Vue3 + Typescript，主要是想随便玩玩儿康康。
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+## 本地运行本项目
 
-## Type Support For `.vue` Imports in TS
+1. `clone` 本项目到本地
+2. `yarn install 或 npm install` 安装依赖
+3. `yarn dev`
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+## 平时怎么用
 
-### If Using Volar
+平时的我们将工具函数按分类放到 `src/lib` 文件夹中，然后运行 `yarn gen`，他会运行 `scripts/generate-function-text.js` 文件，随即生成一个 `src/utils.ts`，里面其实就放了一个数组。整个页面代码就围绕这个数组进行。
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### If Using Vetur
-
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+为什么不直接搞个数组，而是要从文件中读取？就是玩儿~
