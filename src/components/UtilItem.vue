@@ -14,9 +14,10 @@
   <button @click="handleResetUtilContent">重置</button>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue"
 
-export default {
+export default defineComponent ({
   name: "UtilItem",
   props: {
     defaultUtil: Object,
@@ -25,8 +26,8 @@ export default {
   },
   data() {
     return {
-      utilName: (this.defaultUtil.filename || "").split(".")[0],
-      utilContent: this.defaultUtil.content || "",
+      utilName: (this.defaultUtil?.filename || "").split(".")[0],
+      utilContent: this.defaultUtil?.content || "",
       utilInput: "",
       utilOutput: "",
     }
@@ -44,17 +45,16 @@ export default {
   },
   methods: {
     handleRun() {
-      let tempLog = []
       const output = eval(`(${this.utilContent})(${this.utilInput})`)
       this.utilOutput = output
       console.log(`${this.utilName} 运行结果：`)
-      console.log(output, tempLog)
+      console.log(output)
     },
     handleResetUtilContent() {
-      this.utilContent = this.defaultUtil.content
+      this.utilContent = this.defaultUtil?.content
     }
   },
-}
+})
 </script>
 
 <style scoped>

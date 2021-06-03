@@ -1,0 +1,20 @@
+sudo: true
+language: node_js
+node_js:
+  - 14 # use nodejs v14 LTS
+cache:
+  - npm
+  - yarn
+branches:
+  only:
+    - main # build main branch only
+script:
+  - yarn build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  on:
+    branch: main
+  local-dir: dist

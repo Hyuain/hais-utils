@@ -1,9 +1,11 @@
 <template>
-  <div v-for="(tab, index) in tabs" @click="handleChangeTab(index)">{{tab.name}}</div>
+  <div v-for="(tab, index) in tabs" @click="handleChangeTab(index)">{{tab}}</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue"
+
+export default defineComponent({
   name: "TabList",
   props: {
     tabs: Array,
@@ -11,12 +13,11 @@ export default {
   },
   emits: ['changeTab'],
   methods: {
-    handleChangeTab(index) {
-      console.log(index)
+    handleChangeTab(index: number) {
       this.$emit('changeTab', index)
     }
   }
-}
+})
 </script>
 
 <style scoped>
