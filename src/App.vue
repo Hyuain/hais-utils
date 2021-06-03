@@ -13,20 +13,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import uniqueArray from "./lib/unique-array"
+import utils from "./utils"
 
-const TEXT = `
-(function(array) {
-  const set = new Set()
-  const newArray = []
-  array.forEach((item) => {
-    const key = typeof item + JSON.stringify(item)
-    if (set.has(key)) { return }
-    set.add(key)
-    newArray.push(item)
-  })
-  return newArray
-})`
+const TEXT = `(${utils[0].methods[0].content})`
 
 export default defineComponent({
   name: "App",
@@ -38,11 +27,10 @@ export default defineComponent({
     }
   },
   methods: {
-    handleRun(e) {
+    handleRun() {
+      console.log(utils)
       console.log(this.inputData)
       let a = this.inputData
-      // console.log(eval("(function(){ a = " + this.inputData + "})()"))
-      // console.log("1`" + a + "")
       const c = this.xxx + `(${a})`
       console.log(c)
       console.log(eval(c))

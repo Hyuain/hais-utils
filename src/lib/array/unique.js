@@ -1,4 +1,4 @@
-const uniqueArray = (array) => {
+function unique(array) {
   const set = new Set()
   const newArray = []
   array.forEach((item) => {
@@ -9,5 +9,3 @@ const uniqueArray = (array) => {
   })
   return newArray
 }
-
-export default uniqueArray

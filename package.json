@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "gen": "node src/scripts/generate-function-text.js"
   },
   "dependencies": {
     "vue": "^3.0.5",
