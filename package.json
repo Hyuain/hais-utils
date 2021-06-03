@@ -1,7 +1,7 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port=9999",
     "build": "yarn gen && vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "gen": "node src/scripts/generate-function-text.js"
