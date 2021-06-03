@@ -21,13 +21,25 @@ export default {
   props: {
     defaultUtil: Object,
   },
+  computed: {
+  },
   data() {
     return {
       utilName: (this.defaultUtil.filename || "").split(".")[0],
       utilContent: this.defaultUtil.content || "",
       utilInput: "",
       utilOutput: "",
-      utilLogs: "",
+    }
+  },
+  watch: {
+    defaultUtil: {
+      handler(val) {
+        this.utilContent = val.content
+        this.utilName = (val.filename || "").split(".")[0]
+        this.utilInput = ""
+        this.utilOutput = ""
+      },
+      deep: true,
     }
   },
   methods: {
@@ -41,7 +53,7 @@ export default {
     handleResetUtilContent() {
       this.utilContent = this.defaultUtil.content
     }
-  }
+  },
 }
 </script>
 
