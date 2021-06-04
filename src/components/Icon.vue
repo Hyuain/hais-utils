@@ -1,5 +1,7 @@
 <template>
-  <util-item v-for="util in utils" :default-util="util"></util-item>
+  <svg class="icon" aria-hidden="true">
+    <use :xlink:href="'#icon-' + name"></use>
+  </svg>
 </template>
 
 <script lang="ts">
@@ -7,10 +9,9 @@ import UtilItem from "./UtilItem.vue"
 import { defineComponent, PropType } from "vue"
 import { IUtilItem } from "../interface/utils.interface"
 export default defineComponent({
-  name: "UtilList",
-  components: { UtilItem },
+  name: "Icon",
   props: {
-    utils: Array as PropType<IUtilItem[]>,
+    name: String,
   }
 })
 </script>

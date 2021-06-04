@@ -1,4 +1,4 @@
-# 小海的工具箱
+# 海鲜酱的工具箱
 
 一个简单的常用工具函数集，之后会不断扩充（但愿）。[点击这里在线使用](https://hais-teatime.com/hais-utils/)
 
@@ -11,7 +11,7 @@
 ## 本地运行本项目
 
 1. `clone` 本项目到本地
-2. `yarn install 或 npm install` 安装依赖
+2. `yarn install` 或 `npm install` 安装依赖
 3. `yarn dev`
 
 ## 平时怎么用
