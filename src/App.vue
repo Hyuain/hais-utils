@@ -15,7 +15,7 @@ import allUtils from "./utils"
 import UtilList from "./components/UtilList.vue"
 import TabList from "./components/TabList.vue"
 import { ITabItem } from "./interface/basic.interface"
-import "//at.alicdn.com/t/font_2593192_y1ygkg4ehs.js"
+import "https://at.alicdn.com/t/font_2593192_y1ygkg4ehs.js"
 
 export default defineComponent({
   name: "App",
