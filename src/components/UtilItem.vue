@@ -40,8 +40,8 @@ export default defineComponent({
   computed: {},
   data() {
     return {
-      utilName: this.defaultUtil.filename.split(".")[0],
-      utilContent: this.defaultUtil.content,
+      utilName: this.defaultUtil?.filename.split(".")[0],
+      utilContent: this.defaultUtil?.content,
       utilInput: "",
       utilOutput: "",
       isShowCode: false,
@@ -66,7 +66,7 @@ export default defineComponent({
       console.log(output)
     },
     handleResetUtilContent() {
-      this.utilContent = this.defaultUtil.content
+      this.utilContent = this.defaultUtil?.content
     },
     handleToggleCode() {
       this.isShowCode = !this.isShowCode
