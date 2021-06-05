@@ -49,8 +49,8 @@ export default defineComponent({
   },
   computed: {},
   setup() {
-    const inputCodeBox = ref<CodeBox | null>(null)
-    const codeCodeBox = ref<CodeBox | null>(null)
+    const inputCodeBox = ref<typeof CodeBox | null>(null)
+    const codeCodeBox = ref<typeof CodeBox | null>(null)
     return {
       inputCodeBox,
       codeCodeBox,

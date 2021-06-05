@@ -63,7 +63,7 @@ export default defineComponent({
       })
     },
     destroyCoder() {
-      const element = this.coder.doc.cm.getWrapperElement()
+      const element = (this.coder as any).doc.cm.getWrapperElement()
       element && element.remove && element.remove()
     },
   },
