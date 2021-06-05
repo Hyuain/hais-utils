@@ -6,7 +6,7 @@
       <div class="help">直接输入参数即可，不同参数之间用逗号隔开，比如 <code>[1, 2, 3], true</code></div>
       <div class="run-params">
         <div class="code-box-wrapper">
-          <code-box v-model:value="utilInput"></code-box>
+          <code-box ref="inputCodeBox" v-model:value="utilInput"></code-box>
         </div>
         <div class="button" @click="handleRun">运行</div>
       </div>
@@ -18,7 +18,10 @@
       </div>
       <div class="help">可以展开查看源代码，也可以直接在上面修改。试着打个 <code>console.log</code> 吧~</div>
       <div v-if="isShowCode" class="code-box-wrapper">
-        <code-box v-model:value="utilContent"></code-box>
+        <code-box ref="codeCodeBox" v-model:value="utilContent"></code-box>
+        <div class="area action-area">
+          <div class="button" @click="handleResetUtilContent">重置代码</div>
+        </div>
       </div>
     </div>
     <div class="area output-area">
@@ -27,13 +30,13 @@
       <pre>{{utilOutput}}</pre>
     </div>
     <div class="area action-area">
-      <div class="button" @click="handleResetUtilContent">重置</div>
+      <div class="button" @click="handleClearOutput">清空输出</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue"
+import { defineComponent, nextTick, PropType, ref } from "vue"
 import { IUtilItem } from "../interface/utils.interface"
 import Icon from "./Icon.vue"
 import CodeBox from "./CodeBox.vue"
@@ -45,6 +48,14 @@ export default defineComponent({
     defaultUtil: Object as PropType<IUtilItem>,
   },
   computed: {},
+  setup() {
+    const inputCodeBox = ref<CodeBox | null>(null)
+    const codeCodeBox = ref<CodeBox | null>(null)
+    return {
+      inputCodeBox,
+      codeCodeBox,
+    }
+  },
   data() {
     return {
       utilName: this.defaultUtil?.filename.split(".")[0],
@@ -61,6 +72,10 @@ export default defineComponent({
         this.utilName = val.filename.split(".")[0]
         this.utilInput = ""
         this.utilOutput = ""
+        nextTick(() => {
+          this.inputCodeBox?.reInitCoder()
+          this.codeCodeBox?.reInitCoder()
+        })
       },
       deep: true,
     },
@@ -74,6 +89,12 @@ export default defineComponent({
     },
     handleResetUtilContent() {
       this.utilContent = this.defaultUtil?.content
+      nextTick(() => {
+        this.codeCodeBox?.reInitCoder()
+      })
+    },
+    handleClearOutput() {
+      this.utilOutput = ""
     },
     handleToggleCode() {
       this.isShowCode = !this.isShowCode
@@ -134,11 +155,10 @@ export default defineComponent({
 }
 .button {
   background: #66B9BF;
-  border-radius: 14px;
+  border-radius: 18px;
   color: white;
-  height: 28px;
   line-height: 28px;
-  width: 48px;
+  padding: 0 12px;
   text-align: center;
   cursor: pointer;
 }

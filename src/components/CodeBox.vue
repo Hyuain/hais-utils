@@ -1,9 +1,11 @@
 <template>
-  <textarea ref="textarea">{{value}}</textarea>
+  <div>
+    <textarea ref="textarea">{{value}}</textarea>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue"
+import { defineComponent, ref, markRaw } from "vue"
 import { EditorFromTextArea, fromTextArea } from "codemirror"
 import "codemirror/lib/codemirror.css"
 import "codemirror/theme/monokai.css"
@@ -33,16 +35,37 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.coder = fromTextArea(this.textarea!, {
-      tabSize: 2,
-      theme: "monokai",
-      mode: this.language,
-      lineNumbers: true,
-    })
-    this.coder.on("change", (coder) => {
-      const newValue = coder.getValue()
-      this.$emit("update:value", newValue)
-    })
+    this.initCoder()
+  },
+  beforeUnmount() {
+    this.destroyCoder()
+  },
+  methods: {
+    reInitCoder() {
+      this.destroyCoder()
+      this.initCoder()
+    },
+    initCoder() {
+      this.coder = markRaw(
+        fromTextArea(this.textarea!, {
+          tabSize: 2,
+          theme: "monokai",
+          mode: this.language,
+          lineNumbers: true,
+          autocorrect: true,
+          spellcheck: true,
+          smartIndent: true,
+        }),
+      )
+      this.coder.on("change", (coder) => {
+        const newValue = coder.getValue()
+        this.$emit("update:value", newValue)
+      })
+    },
+    destroyCoder() {
+      const element = this.coder.doc.cm.getWrapperElement()
+      element && element.remove && element.remove()
+    },
   },
 })
 </script>
