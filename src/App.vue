@@ -35,16 +35,16 @@ export default defineComponent({
   methods: {
     handleChangeTab(index: number) {
       this.currentIndex = index
-    }
-  }
+    },
+  },
 })
 </script>
 
 <style lang="scss">
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
-  url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+  src: url('./assets/JetBrainsMono-Regular.woff2') format('woff2'),
+  url('./assets/JetBrainsMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -66,6 +66,8 @@ export default defineComponent({
   flex: 1;
 }
 textarea, pre, code {
+  margin: 0;
+  padding: 0;
   font-family: 'JetBrains Mono', sans-serif;
 }
 code {

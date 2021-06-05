@@ -1,26 +1,32 @@
 <template>
   <div class="util-item">
     <div class="util-name">{{ utilName }}</div>
-    <div class="params-area">
+    <div class="area params-area">
       <div class="title">参数</div>
-      <textarea v-model="utilInput"></textarea>
-      <div class="button" @click="handleRun">运行</div>
-      <div @click="handleToggleCode" class="show-detail">
-        {{isShowCode ? '收起' : '展开'}}代码
-        <icon name="show-detail" :class="['icon', { up: isShowCode }]"></icon>
+      <div class="help">直接输入参数即可，不同参数之间用逗号隔开，比如 <code>[1, 2, 3], true</code></div>
+      <div class="run-params">
+        <div class="code-box-wrapper">
+          <code-box v-model:value="utilInput"></code-box>
+        </div>
+        <div class="button" @click="handleRun">运行</div>
       </div>
     </div>
-    <div class="help">直接输入参数即可，不同参数之间用逗号隔开，比如 <code>[1, 2, 3], true</code> </div>
-    <div v-if="isShowCode" class="code-area">
-      <textarea v-model="utilContent">
-      </textarea>
+    <div class="area code-area">
+      <div @click="handleToggleCode" class="title">
+        {{ isShowCode ? "收起" : "展开" }}代码
+        <icon name="show-detail" :class="['icon', { up: isShowCode }]"></icon>
+      </div>
+      <div class="help">可以展开查看源代码，也可以直接在上面修改。试着打个 <code>console.log</code> 吧~</div>
+      <div v-if="isShowCode" class="code-box-wrapper">
+        <code-box v-model:value="utilContent"></code-box>
+      </div>
     </div>
-    <div class="output-area">
-      <div>输出</div>
+    <div class="area output-area">
+      <div class="title">输出</div>
       <div class="help">也可以在控制台查看输出</div>
-      <pre>{{ utilOutput }}</pre>
+      <pre>{{utilOutput}}</pre>
     </div>
-    <div class="action-area">
+    <div class="area action-area">
       <div class="button" @click="handleResetUtilContent">重置</div>
     </div>
   </div>
@@ -30,10 +36,11 @@
 import { defineComponent, PropType } from "vue"
 import { IUtilItem } from "../interface/utils.interface"
 import Icon from "./Icon.vue"
+import CodeBox from "./CodeBox.vue"
 
 export default defineComponent({
   name: "UtilItem",
-  components: { Icon },
+  components: { CodeBox, Icon },
   props: {
     defaultUtil: Object as PropType<IUtilItem>,
   },
@@ -70,7 +77,7 @@ export default defineComponent({
     },
     handleToggleCode() {
       this.isShowCode = !this.isShowCode
-    }
+    },
   },
 })
 </script>
@@ -88,50 +95,36 @@ export default defineComponent({
   padding: 12px;
   margin-right: 200px;
 }
+.title {
+  padding-bottom: 8px;
+}
 .help {
   font-size: small;
-  padding-top: 4px;
   padding-bottom: 8px;
 }
 .params-area {
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  .title {
-    flex-shrink: 0;
-  }
-  textarea {
-    margin-left: 16px;
-    height: 32px;
-    width: 100%;
-    max-width: 400px;
-    line-height: 32px;
-  }
-  .button {
-    flex-shrink: 0;
-    margin-left: 16px;
-  }
-  .show-detail {
-    margin-left: 16px;
-    flex: 1;
+  .run-params {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    padding: 8px 0;
+    .code-box-wrapper {
+      flex: 1;
+      margin-right: 8px;
+    }
+    .button {
+      flex-shrink: 0;
+    }
+  }
+}
+.code-area {
+  .title {
     cursor: pointer;
   }
   .icon {
     &.up {
-      transform: rotateZ(180deg);
+      transform: rotateZ(-180deg);
       transition: all 300ms;
     }
     transition: all 300ms;
-  }
-}
-.code-area {
-  padding: 8px 0;
-  textarea {
-    height: 300px;
-    width: 500px;
   }
 }
 .action-area {
@@ -149,10 +142,7 @@ export default defineComponent({
   text-align: center;
   cursor: pointer;
 }
-textarea {
-  border-radius: 12px;
-  padding: 4px 8px;
-  border-color: #66B9BF;
-  overflow: hidden;
+.area {
+  padding: 8px 0;
 }
 </style>

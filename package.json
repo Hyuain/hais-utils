@@ -4,13 +4,16 @@
     "dev": "yarn gen && vite --port=9999",
     "build": "yarn gen && vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "gen": "node src/scripts/generate-function-text.js"
+    "gen": "node src/scripts/generate-function-text.js",
+    "fix-esbuild": "node ./node_modules/esbuild/install.js"
   },
   "dependencies": {
+    "codemirror": "^5.61.1",
     "vue": "^3.0.5",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/codemirror": "^5.60.0",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "sass": "^1.34.1",

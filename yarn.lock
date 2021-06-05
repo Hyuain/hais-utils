@@ -20,6 +20,25 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     to-fast-properties "^2.0.0"
 
+"@types/codemirror@^5.61.1":
+  version "5.60.0"
+  resolved "https://registry.nlark.com/@types/codemirror/download/@types/codemirror-5.60.0.tgz?cache=0&sync_timestamp=1621240804729&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fcodemirror%2Fdownload%2F%40types%2Fcodemirror-5.60.0.tgz#bf14b728449ebd355c17054262a083639a995710"
+  integrity sha1-vxS3KESevTVcFwVCYqCDY5qZVxA=
+  dependencies:
+    "@types/tern" "*"
+
+"@types/estree@*":
+  version "0.0.48"
+  resolved "https://registry.nlark.com/@types/estree/download/@types/estree-0.0.48.tgz?cache=0&sync_timestamp=1622611944045&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Festree%2Fdownload%2F%40types%2Festree-0.0.48.tgz#18dc8091b285df90db2f25aa7d906cfc394b7f74"
+  integrity sha1-GNyAkbKF35DbLyWqfZBs/DlLf3Q=
+
+"@types/tern@*":
+  version "0.23.3"
+  resolved "https://registry.nlark.com/@types/tern/download/@types/tern-0.23.3.tgz?cache=0&sync_timestamp=1621243850078&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Ftern%2Fdownload%2F%40types%2Ftern-0.23.3.tgz#4b54538f04a88c9ff79de1f6f94f575a7f339460"
+  integrity sha1-S1RTjwSojJ/3neH2+U9XWn8zlGA=
+  dependencies:
+    "@types/estree" "*"
+
 "@vitejs/plugin-vue@^1.2.3":
   version "1.2.3"
   resolved "https://registry.nlark.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.2.3.tgz#2e8e008b1cc3a6ad1dfbec75743c7ffd9b4872a6"
@@ -200,6 +219,11 @@ chainsaw@~0.1.0:
     readdirp "~3.5.0"
   optionalDependencies:
     fsevents "~2.3.1"
+
+codemirror@^5.61.1:
+  version "5.61.1"
+  resolved "https://registry.nlark.com/codemirror/download/codemirror-5.61.1.tgz#ccfc8a43b8fcfb8b12e8e75b5ffde48d541406e0"
+  integrity sha1-zPyKQ7j8+4sS6OdbX/3kjVQUBuA=
 
 colorette@^1.2.2:
   version "1.2.2"
