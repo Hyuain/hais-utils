@@ -17,6 +17,14 @@ import TabList from "./components/TabList.vue"
 import { ITabItem } from "./interface/basic.interface"
 import "https://at.alicdn.com/t/font_2593192_y1ygkg4ehs.js"
 
+// 绑定函数到 window 上
+allUtils.forEach((category) => {
+  category.utils.forEach((util) => {
+    const evalString = `window.${util.filename.split(".")[0]}=${util.content}`
+    eval(evalString)
+  })
+})
+
 export default defineComponent({
   name: "App",
   components: { TabList, UtilList },
@@ -74,7 +82,7 @@ code {
   background-color: rgba(102, 185, 191, 0.1);
   color: #66B9BF;
   border-radius: 12px;
-  padding: 4px 6px;
+  padding: 2px 6px;
 }
 .icon {
   width: 1em; height: 1em;

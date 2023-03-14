@@ -4,6 +4,7 @@
     <div class="area params-area">
       <div class="title">参数</div>
       <div class="help">直接输入参数即可，不同参数之间用逗号隔开，比如 <code>[1, 2, 3], true</code></div>
+      <div class="help">函数 <code>{{utilName}}</code> 也已经绑定到 <code>window</code> 上了，可以直接调用 <code>{{utilName}}(yourArgs)</code></div>
       <div class="run-params">
         <div class="code-box-wrapper">
           <code-box ref="inputCodeBox" v-model:value="utilInput"></code-box>
@@ -115,6 +116,9 @@ export default defineComponent({
   border-radius: 16px;
   padding: 12px;
   margin-right: 200px;
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
 }
 .title {
   padding-bottom: 8px;
