@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v2.5.1
         with:
           node-version: '14'
-          cache: 'npm'
+          cache: 'yarn'
 
       - name: Install And Build
         run: |
